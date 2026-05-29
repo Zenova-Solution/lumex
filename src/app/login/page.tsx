@@ -6,9 +6,6 @@ export const metadata: Metadata = {
   description: "Sign in to your account.",
 };
 
-export default async function Page(props: {
-  searchParams: Promise<{ callbackUrl?: string }>;
-}) {
-  const { callbackUrl } = await props.searchParams;
-  return <LoginPage callbackUrl={callbackUrl} />;
+export default function Page() {
+  return <LoginPage />;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlidersHorizontal, Grid3X3, List, X } from "lucide-react";
 import { Button, Input, Badge } from "@/components/ui";
@@ -19,17 +20,14 @@ import {
   SelectValue,
 } from "@/components/ui";
 
-interface ShopPageProps {
-  searchParams?: { search?: string; category?: string; sort?: string };
-}
-
-export function ShopPage({ searchParams }: ShopPageProps) {
+export function ShopPage() {
+  const searchParams = useSearchParams();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [search, setSearch] = useState(searchParams?.search || "");
+  const [search, setSearch] = useState(searchParams.get("search") || "");
   const [selectedCategory, setSelectedCategory] = useState(
-    searchParams?.category || "all"
+    searchParams.get("category") || "all"
   );
-  const [sortBy, setSortBy] = useState(searchParams?.sort || "newest");
+  const [sortBy, setSortBy] = useState(searchParams.get("sort") || "newest");
   const [priceRange, setPriceRange] = useState<{ min: number; max?: number } | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 

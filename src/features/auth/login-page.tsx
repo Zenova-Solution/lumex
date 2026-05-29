@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-provider";
 import { motion } from "framer-motion";
@@ -9,12 +9,10 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { Button, Input, Label } from "@/components/ui";
 import toast from "react-hot-toast";
 
-interface LoginPageProps {
-  callbackUrl?: string;
-}
-
-export function LoginPage({ callbackUrl }: LoginPageProps) {
+export function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || undefined;
   const { signIn, status } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);

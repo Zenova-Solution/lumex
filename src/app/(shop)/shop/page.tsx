@@ -6,9 +6,6 @@ export const metadata: Metadata = {
   description: "Browse our curated collection of premium products.",
 };
 
-export default async function Page(props: {
-  searchParams: Promise<{ search?: string; category?: string; sort?: string }>;
-}) {
-  const searchParams = await props.searchParams;
-  return <ShopPage searchParams={searchParams} />;
+export default function Page() {
+  return <ShopPage />;
 }
