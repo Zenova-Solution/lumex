@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useAuth } from "@/lib/auth-provider";
 import { useTheme } from "next-themes";
 import {
@@ -18,14 +19,22 @@ import {
   LayoutDashboard,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cart";
 import { useWishlistStore } from "@/store/wishlist";
 import { useUIStore } from "@/store/ui";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import { CartDrawer } from "@/features/cart/cart-drawer";
-import { SearchModal } from "@/components/layout/search-modal";
+
+const CartDrawer = dynamic(
+  () => import("@/features/cart/cart-drawer").then((m) => m.CartDrawer),
+  { ssr: false }
+);
+
+const SearchModal = dynamic(
+  () =>
+    import("@/components/layout/search-modal").then((m) => m.SearchModal),
+  { ssr: false }
+);
 
 export function Header() {
   const { user, signOut } = useAuth();
