@@ -47,7 +47,7 @@ export function FeaturedProducts() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        className="grid gap-6 grid-cols-2 lg:grid-cols-4"
       >
         {featuredProducts.slice(0, 4).map((product) => (
           <ProductCard key={product.id} product={product} />

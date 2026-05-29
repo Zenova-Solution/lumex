@@ -235,23 +235,23 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
                     <Button
                       variant="outline"
                       size="icon"
-                      className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl"
+                      className="h-10 w-10 rounded-xl"
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
                       disabled={quantity <= 1}
                     >
-                      <Minus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <Minus className="h-4 w-4" />
                     </Button>
-                    <span className="flex h-9 w-14 sm:h-10 sm:w-16 items-center justify-center rounded-xl border text-sm font-medium">
+                    <span className="flex h-10 w-14 items-center justify-center rounded-xl border text-sm font-medium">
                       {quantity}
                     </span>
                     <Button
                       variant="outline"
                       size="icon"
-                      className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl"
+                      className="h-10 w-10 rounded-xl"
                       onClick={() => setQuantity(Math.min(10, quantity + 1))}
                       disabled={quantity >= 10}
                     >
-                      <Plus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <Plus className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
@@ -262,8 +262,8 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
                     className="flex-1 gap-2 rounded-2xl"
                     onClick={handleAddToCart}
                   >
-                    <Plus className="h-5 w-5" />
-                    <span className="truncate">Add to Cart — {formatPrice(product.price * quantity)}</span>
+                    <Plus className="h-5 w-5 shrink-0" />
+                    <span className="truncate">Add to Cart</span>
                   </Button>
                   <Button
                     size="lg"
@@ -289,14 +289,14 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
                     }}
                   >
                     <Heart
-                      className={`h-4 w-4 ${
+                      className={`h-4 w-4 shrink-0 ${
                         isWishlisted ? "fill-red-500 text-red-500" : ""
                       }`}
                     />
-                    {isWishlisted ? "Saved" : "Save to Wishlist"}
+                    {isWishlisted ? "Saved" : "Save"}
                   </Button>
                   <Button variant="outline" className="flex-1 gap-2 rounded-xl">
-                    <Share2 className="h-4 w-4" />
+                    <Share2 className="h-4 w-4 shrink-0" />
                     Share
                   </Button>
                 </div>
@@ -329,7 +329,7 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
           <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl font-bold tracking-tight">
             You May Also Like
           </h2>
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
             {featuredProducts
               .filter((p) => p.id !== product.id)
               .slice(0, 4)
