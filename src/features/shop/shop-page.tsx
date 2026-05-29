@@ -46,6 +46,7 @@ export function ShopPage() {
     { id: "home-living", name: "Home & Living" },
     { id: "footwear", name: "Footwear" },
     { id: "bags", name: "Bags" },
+    { id: "jewelry", name: "Jewelry" },
   ];
 
   const filteredProducts = useMemo(() => {

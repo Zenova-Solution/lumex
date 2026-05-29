@@ -234,7 +234,7 @@ export function TrendingCarousel() {
 
       {hasScroll && (
         <div className="mt-8 flex items-center justify-center gap-2">
-          {featuredProducts.map((_, i) => (
+          {Array.from({ length: maxIndex + 1 }, (_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
