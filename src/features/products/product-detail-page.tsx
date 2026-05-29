@@ -256,29 +256,32 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col gap-3">
                   <Button
                     size="lg"
-                    className="flex-1 gap-2 rounded-2xl"
+                    className="w-full gap-3 rounded-2xl h-14"
                     onClick={handleAddToCart}
                   >
                     <Plus className="h-5 w-5 shrink-0" />
-                    <span className="truncate">Add to Cart</span>
+                    <span>Add to Cart</span>
+                    <span className="ml-auto font-semibold tabular-nums">
+                      {formatPrice(product.price * quantity)}
+                    </span>
                   </Button>
                   <Button
                     size="lg"
                     variant="premium"
-                    className="flex-1 rounded-2xl"
+                    className="w-full rounded-2xl h-14"
                     onClick={handleBuyNow}
                   >
                     Buy Now
                   </Button>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex gap-3">
                   <Button
                     variant="outline"
-                    className="flex-1 gap-2 rounded-xl"
+                    className="flex-1 gap-2 rounded-xl h-11"
                     onClick={() => {
                       toggleItem(product.id);
                       toast.success(
@@ -295,7 +298,7 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
                     />
                     {isWishlisted ? "Saved" : "Save"}
                   </Button>
-                  <Button variant="outline" className="flex-1 gap-2 rounded-xl">
+                  <Button variant="outline" className="flex-1 gap-2 rounded-xl h-11">
                     <Share2 className="h-4 w-4 shrink-0" />
                     Share
                   </Button>
